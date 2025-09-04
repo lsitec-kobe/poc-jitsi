@@ -1,97 +1,70 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 📱 PocJitsi
 
-# Getting Started
+POC simples de integração do **Jitsi SDK** em um aplicativo **React Native**.  
+O objetivo deste projeto é validar o uso do Jitsi para videoconferências dentro de um app mobile.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+---
 
-## Step 1: Start Metro
+## 🚀 Tecnologias utilizadas
+- [React Native](https://reactnative.dev/)
+- [Jitsi Meet SDK](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-react-native-sdk)
+---
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## ⚙️ Pré-requisitos
+Antes de rodar o projeto, você precisa ter instalado:
+- [Node.js](https://nodejs.org/) (>= 18.x)
+- [Java JDK 17](https://adoptium.net/) (para build Android)
+- [React Native CLI](https://reactnative.dev/docs/environment-setup)
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+---
 
-```sh
-# Using npm
-npm start
+## 🛠️ Problemas comuns
 
-# OR using Yarn
-yarn start
+### 1. Erro de versão do Java
+**Causa:** O projeto exige **Java 17** para compilar.  
+**Solução:**  
+- Instale o [JDK 17](https://adoptium.net/).  
+- Configure a variável `JAVA_HOME` corretamente.  
+- Verifique no terminal com:
+```bash
+java -version
 ```
 
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+### 2. Erros relacionados ao Gradle
 ```
-
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+Cannot get property 'gradlePluginVersion' on extra properties extension
 ```
+**Causa:** A variável não está definida corretamente no gradle.properties ou build.gradle.  
+**Solução:** 
+- Certifique-se de definir gradlePluginVersion dentro do ext { } em build.gradle.
+- Exemplo:
+  ```
+  ext {
+    gradlePluginVersion = "8.4.2"
+  }
+  ```
+---
+## 🚫 Observação importante sobre Expo
 
-Then, and every time you update your native dependencies, run:
+### 
+O Expo não é recomendado para este projeto, pois o Jitsi SDK depende de módulos nativos que não são compatíveis com o Expo Go.
+Para rodar corretamente, utilize o React Native CLI.
 
-```sh
-bundle exec pod install
-```
+---
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+## 📡 Criando e entrando em uma sala no Jitsi
 
-```sh
-# Using npm
-npm run ios
+1. Acesse https://meet.jit.si/
+ no navegador.
 
-# OR using Yarn
-yarn ios
-```
+2. Digite um nome de sala (exemplo: poc-jitsi-test) e clique em Start Meeting.
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+3. Copie o nome da sala.
+   - O domínio já está configurado como https://meet.jit.si/.
+   - Você só precisa informar o nome da sala no app.
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+4. Abra o aplicativo PocJitsi no celular.
 
-## Step 3: Modify your app
+5. Informe o nome da sala criada e entre na reunião.
 
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+> 🔎 **Dica:** Se você usar o mesmo nome de sala em vários dispositivos (ex: celular e navegador), todos entrarão na mesma chamada.
