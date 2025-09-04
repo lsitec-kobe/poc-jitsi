@@ -52,6 +52,20 @@ Para rodar corretamente, utilize o React Native CLI.
 
 ---
 
+## ⚙️ Instalação do projeto
+
+Clone o repositório e instale as dependências:
+
+```bash
+git clone https://github.com/seu-usuario/PocJitsi.git
+cd PocJitsi
+npm install
+```
+### Executando no Android
+```
+npx react-native run-android
+```
+
 ## 📡 Criando e entrando em uma sala no Jitsi
 
 1. Acesse https://meet.jit.si/
