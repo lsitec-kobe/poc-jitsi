@@ -44,11 +44,19 @@ Cannot get property 'gradlePluginVersion' on extra properties extension
   }
   ```
 ---
-## 🚫 Observação importante sobre Expo
+## 🚫 Observação importante
 
-### 
+### Expo
+
 O Expo não é recomendado para este projeto, pois o Jitsi SDK depende de módulos nativos que não são compatíveis com o Expo Go.
 Para rodar corretamente, utilize o React Native CLI.
+
+### New Archtecture
+
+O Jitsi SDK ainda não possui suporte para a nava arquitetura do React Native. Então garanta que no arquivo gradle.properties esteja:
+```
+newArchEnabled=false
+```
 
 ---
 
